@@ -8,4 +8,4 @@ data MoodleVal = Number Scientific
                | Variable String
                | Op String MoodleVal MoodleVal
                | Function String [MoodleVal]
-               deriving (Show)
+               deriving (Show, Eq)

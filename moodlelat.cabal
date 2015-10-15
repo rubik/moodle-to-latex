@@ -20,6 +20,22 @@ executable moddlelat
   main-is:             Main.hs
   -- other-modules:
   other-extensions:    OverloadedStrings
-  build-depends:       base >=4.8 && <4.9, scientific >=0.3 && <0.4, text >=1.2 && <1.3, attoparsec >=0.13 && <0.14
+  build-depends: base       >=4.8  && <4.9
+               , scientific >=0.3  && <0.4
+               , text       >=1.2  && <1.3
+               , attoparsec >=0.13 && <0.14
+  hs-source-dirs:      Moodle
+  default-language:    Haskell2010
+
+Test-Suite Moodle-Tests
+  type:          detailed-0.9
+  test-module:   Test.Moodle
+  build-depends: base       >=4.8  && <4.9
+               , scientific >=0.3  && <0.4
+               , text       >=1.2  && <1.3
+               , attoparsec >=0.13 && <0.14
+               , Cabal
+               , HUnit
+               , cabal-test-hunit
   hs-source-dirs:      Moodle
   default-language:    Haskell2010
