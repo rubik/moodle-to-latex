@@ -49,7 +49,7 @@ factor =  parens parseExpr
       <|> parseNumber
 
 opAction :: String -> Parser (MoodleVal -> MoodleVal -> MoodleVal)
-opAction op = do { operator op; pure $ Op op }
+opAction op = operator op *> pure (Op op)
 
 multiplyAction :: Parser (MoodleVal -> MoodleVal -> MoodleVal)
 multiplyAction = opAction "*" <|> opAction "/"
