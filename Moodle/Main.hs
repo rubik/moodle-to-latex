@@ -1,4 +1,4 @@
-module Moodle
+module Main (main)
     where
 
 import Data.Text (pack)
