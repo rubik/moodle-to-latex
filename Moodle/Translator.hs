@@ -11,7 +11,7 @@ group s = '{':s ++ "}"
 
 -- TODO: Use printf instead of string concatenation
 toLatex :: MoodleVal -> String
-toLatex (Number n) = group $ either show show $ floatingOrInteger n
+toLatex (Number n) = either show show $ floatingOrInteger n
 toLatex (Variable v) = group v  -- TODO: make interpolation possible
 toLatex (Op op a b) =
     case op of
