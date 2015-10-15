@@ -1,3 +1,4 @@
+*.sw[eop]
 dist
 cabal-dev
 *.o
