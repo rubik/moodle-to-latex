@@ -40,7 +40,7 @@ mulTerm :: Parser MoodleVal
 mulTerm = expTerm `chainl1` multiplyAction
 
 expTerm :: Parser MoodleVal
-expTerm = factor `chainl1` opAction "^"
+expTerm = factor `chainr1` opAction "^"
 
 factor :: Parser MoodleVal
 factor =  parens parseExpr
@@ -61,3 +61,8 @@ chainl1 :: Alternative m => m a -> m (a -> a -> a) -> m a
 chainl1 p op = scan
     where scan = flip id <$> p <*> rst
           rst = (\f y g x -> g (f x y)) <$> op <*> p <*> rst <|> pure id
+
+chainr1 :: Alternative m => m a -> m (a -> a -> a) -> m a
+chainr1 p op = scan
+    where scan = flip id <$> p <*> rst
+          rst = (flip <$> op <*> scan) <|> pure id

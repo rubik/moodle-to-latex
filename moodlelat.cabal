@@ -24,7 +24,7 @@ executable moddlelat
                , scientific >=0.3  && <0.4
                , text       >=1.2  && <1.3
                , attoparsec >=0.13 && <0.14
-  hs-source-dirs:      Moodle
+  hs-source-dirs:      src
   default-language:    Haskell2010
 
 Test-Suite Moodle-Tests
@@ -37,5 +37,5 @@ Test-Suite Moodle-Tests
                , Cabal
                , HUnit
                , cabal-test-hunit
-  hs-source-dirs:      Moodle
+  hs-source-dirs:      src
   default-language:    Haskell2010
