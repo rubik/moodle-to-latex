@@ -25,5 +25,9 @@ expected @==? actual = Right expected @=? actual
 
 basic :: [(String, Test)]
 basic =
-    [ testCase "Truth tests" $ Number 2 @==? parse "2"
+    [ testCase "single number" $ Number 2 @==? parse "2"
+    , testCase "single op" $ Op "*" (Number 3) (Number 9) @==? parse "3*9"
+    , testCase "func no args" $ Function "pi" [] @==? parse "pi()"
+    , testCase "func 1 arg" $ Function "sqrt" [Number 3] @==? parse "sqrt(3)"
+    , testCase "func 2 args" $ Function "sqrt" [Number 3, Number 4] @==? parse "sqrt(3, 4)"
     ]
