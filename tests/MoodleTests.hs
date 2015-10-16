@@ -1,4 +1,4 @@
-module Test.Moodle
+module MoodleTests (tests)
     where
 
 import Test.HUnit (Assertion, Test(..), (@=?))

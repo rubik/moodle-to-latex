@@ -16,7 +16,7 @@ build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
 
-executable moddlelat
+executable moodlelat
   main-is:             Main.hs
   -- other-modules:
   other-extensions:    OverloadedStrings
@@ -27,9 +27,25 @@ executable moddlelat
   hs-source-dirs:      src
   default-language:    Haskell2010
 
-Test-Suite Moodle-Tests
+library
+  hs-source-dirs: src
+  default-language: Haskell2010
+  build-depends: base       >=4.8  && <4.9
+               , scientific >=0.3  && <0.4
+               , text       >=1.2  && <1.3
+               , attoparsec >=0.13 && <0.14
+  exposed-modules:
+    Moodle.Parser
+    Moodle.Translator
+    Moodle.Types
+
+test-suite Moodle-Tests
   type:          detailed-0.9
-  test-module:   Test.Moodle
+  test-module: MoodleTests
+  other-modules:
+      Moodle.Parser
+      Moodle.Translator
+      Moodle.Types
   build-depends: base       >=4.8  && <4.9
                , scientific >=0.3  && <0.4
                , text       >=1.2  && <1.3
@@ -37,5 +53,6 @@ Test-Suite Moodle-Tests
                , Cabal
                , HUnit
                , cabal-test-hunit
-  hs-source-dirs:      src
-  default-language:    Haskell2010
+               , MoodleLatex
+  hs-source-dirs: src tests
+  default-language: Haskell2010
