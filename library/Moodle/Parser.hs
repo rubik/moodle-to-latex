@@ -4,8 +4,7 @@ module Moodle.Parser (parseExpr)
 
 import Data.Char (isAlphaNum)
 import Data.Text (Text, pack)
-import Data.Scientific (Scientific)
-import Control.Applicative (Alternative, pure, (<|>), (*>), (<*), (<$>), (<*>))
+import Control.Applicative (Alternative, (<|>))
 import Data.Attoparsec.Text
 import Moodle.Types (MoodleVal(..))
 
@@ -59,9 +58,8 @@ addAction :: Parser (MoodleVal -> MoodleVal -> MoodleVal)
 addAction = opAction "+" <|> opAction "-"
 
 chainl1 :: Alternative m => m a -> m (a -> a -> a) -> m a
-chainl1 p op = scan
-    where scan = flip id <$> p <*> rst
-          rst = (\f y g x -> g (f x y)) <$> op <*> p <*> rst <|> pure id
+chainl1 p op = flip id <$> p <*> rst
+    where rst = (\f y g x -> g (f x y)) <$> op <*> p <*> rst <|> pure id
 
 chainr1 :: Alternative m => m a -> m (a -> a -> a) -> m a
 chainr1 p op = scan
