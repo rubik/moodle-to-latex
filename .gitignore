@@ -1,5 +1,5 @@
 *.sw[eop]
-dist
+dist/
 cabal-dev
 *.o
 *.hi

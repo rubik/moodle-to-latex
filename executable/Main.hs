@@ -3,8 +3,7 @@ module Main (main)
 
 import Data.Text (pack)
 import Data.Attoparsec.Text (parseOnly)
-import Moodle.Parser (parseExpr)
-import Moodle.Translator (toLatex)
+import Moodle
 
 
 main :: IO ()

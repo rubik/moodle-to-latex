@@ -33,6 +33,7 @@ parseFunction :: Parser MoodleVal
 parseFunction = Function <$> many1' letter <*>
     parens (parseExpr `sepBy` operator ",")
 
+-- | Parse a Moodle expression. This parser expects 'Text', not a 'String'.
 parseExpr :: Parser MoodleVal
 parseExpr = mulTerm `chainl1` addAction
 

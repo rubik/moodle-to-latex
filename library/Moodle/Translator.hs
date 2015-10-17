@@ -10,6 +10,7 @@ group :: String -> String
 group s = '{':s ++ "}"
 
 -- TODO: Use printf instead of string concatenation
+-- | Convert a 'MoodleVal' value into a Latex string.
 toLatex :: MoodleVal -> String
 toLatex (Number n)
     | n >= 0    = formatted
