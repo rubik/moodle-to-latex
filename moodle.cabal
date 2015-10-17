@@ -31,7 +31,7 @@ executable moodlelat
   hs-source-dirs:      app
   main-is:             Main.hs
   ghc-options:         -Wall
-  other-extensions: OverloadedStrings
+  other-extensions:    OverloadedStrings
   build-depends:       base   ==4.*
                      , moodle -any
                      , scientific >=0.3  && <0.4
@@ -49,11 +49,15 @@ test-suite moodle-tests
                      , text       >=1.2  && <1.3
                      , attoparsec >=0.12 && <0.14
                      , hspec ==2.*
+                     , hspec-attoparsec ==0.1.*
                      , HUnit -any
                      , QuickCheck -any
   ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
   default-language:    Haskell2010
   other-modules:       Moodle
+                       Moodle.Parser
+                       Moodle.Translator
+                       Moodle.Types
                        MoodleSpec
 test-suite style
   type:                exitcode-stdio-1.0
