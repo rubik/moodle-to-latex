@@ -62,8 +62,8 @@ spec = do
             toLatex (Number 4) `shouldBe` "4"
         it "groups a negative number" $
             toLatex (Number (-42.2)) `shouldBe` "{-42.2}"
-        it "groups a variable" $
-            toLatex (Variable "bla") `shouldBe` "{bla}"
+        it "groups a variable into mathrm" $
+            toLatex (Variable "bla") `shouldBe` "\\mathrm{bla}"
         it "does not always group multiplication" $
             toLatex (Op "*" (Number 4) (Number (-5))) `shouldBe` "4\\cdot{-5}"
         it "always groups division" $

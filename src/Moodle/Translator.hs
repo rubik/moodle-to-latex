@@ -16,7 +16,7 @@ toLatex (Number n)
     | n >= 0    = formatted
     | otherwise = group formatted
         where formatted = either show show $ floatingOrInteger n
-toLatex (Variable v) = group v  -- TODO: make interpolation possible
+toLatex (Variable v) = "\\mathrm" ++ group v  -- TODO: make interpolation possible
 toLatex (Op op a b) =
     case op of
       "*" -> toLatex a ++ "\\cdot" ++ toLatex b
