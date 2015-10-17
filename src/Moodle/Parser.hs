@@ -56,6 +56,6 @@ chainl1 p op = flip id <$> p <*> rst
     where rst = (\f y g x -> g (f x y)) <$> op <*> p <*> rst <|> pure id
 
 chainr1 :: Alternative m => m a -> m (a -> a -> a) -> m a
-chainr1 p op = scan
-    where scan = flip id <$> p <*> rst
-          rst = (flip <$> op <*> scan) <|> pure id
+chainr1 p op = scanAhead
+    where scanAhead = flip id <$> p <*> rst
+          rst = (flip <$> op <*> scanAhead) <|> pure id
