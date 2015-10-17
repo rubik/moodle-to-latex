@@ -6,9 +6,9 @@ import System.Exit (exitFailure, exitSuccess)
 arguments :: [String]
 arguments =
     [ "benchmark"
-    , "executable"
-    , "library"
-    , "test-suite"
+    , "app"
+    , "src"
+    , "test"
     ]
 
 main :: IO ()

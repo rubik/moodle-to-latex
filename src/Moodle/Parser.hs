@@ -9,24 +9,18 @@ import Data.Attoparsec.Text
 import Moodle.Types (MoodleVal(..))
 
 
-delim1 :: String -> Parser Text
-delim1 d = string (pack d) <* skipSpace
-
-delim2 :: String -> Parser Text
-delim2 d = skipSpace *> string (pack d)
-
 parens :: Parser a -> Parser a
-parens p = delim1 "(" *> p <* delim2 ")"
+parens p = operator "(" *> p <* operator ")"
 
 operator :: String -> Parser Text
 operator op = skipSpace *> string (pack op) <* skipSpace
 
 parseNumber :: Parser MoodleVal
-parseNumber = Number <$> scientific
+parseNumber = Number <$> (skipSpace *> scientific)
 
 parseVariable :: Parser MoodleVal
 parseVariable = Variable <$> var
-    where var = delim1 "{" *> many1' (satisfy isAlphaNum) <* delim2 "}"
+    where var = operator "{" *> many1' (satisfy isAlphaNum) <* operator "}"
 
 parseFunction :: Parser MoodleVal
 parseFunction = Function <$> many1' letter <*>
