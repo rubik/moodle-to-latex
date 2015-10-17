@@ -7,11 +7,10 @@ build, launch:
 
 ### Running
 
-At the moment the program loops forever asking for input and translating to
-Latex. Example run:
+At the moment the program expects an expression as a command line argument and
+translates it to Latex. Example run:
 
-    $ moodlelat
-    2 * pi() - sqrt(24, 3) + 4 * (2 - 3)
+    $ moodlelat "2 * pi() - sqrt(24, 3) + 4 * (2 - 3)"
     {{2\cdot\pi}-{\sqrt[3]{24}}}+{4\cdot{2}-{3}}
-    2 * 4
+    $ moodlelat "2 * 4"
     2\cdot4
