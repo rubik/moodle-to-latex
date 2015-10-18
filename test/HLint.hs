@@ -5,8 +5,7 @@ import System.Exit (exitFailure, exitSuccess)
 
 arguments :: [String]
 arguments =
-    [ "benchmark"
-    , "app"
+    [ "app"
     , "src"
     , "test"
     ]
